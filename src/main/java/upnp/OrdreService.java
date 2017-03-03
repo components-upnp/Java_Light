@@ -5,7 +5,6 @@
  */
 package upnp;
 
-import display.Etat;
 import java.beans.PropertyChangeSupport;
 import org.fourthline.cling.binding.annotations.UpnpAction;
 import org.fourthline.cling.binding.annotations.UpnpInputArgument;
