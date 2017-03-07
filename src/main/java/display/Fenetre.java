@@ -90,10 +90,11 @@ public class Fenetre extends javax.swing.JFrame {
                 new PropertyChangeListener() {
                     @Override
                     public void propertyChange(PropertyChangeEvent pce) {
-                        if(pce.getPropertyName().equals("valeurstatus")){
+                        if(pce.getPropertyName().equals("valeur") && !(etat.equals(Etat.Verouille))){
                             lumiere1.setLuminosite(
                                 Integer.parseInt((String) pce.getNewValue())
                             );
+                            lumiere1.actualiser();
                             slider.setValue(lumiere1.getLuminosite());
                         }
                     }
