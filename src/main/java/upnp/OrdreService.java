@@ -42,6 +42,7 @@ public class OrdreService {
     public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue){
         String targetOldValue = target;
         String statusOldValue = status;
+        boolean etat = true;
         
         if(newTargetValue.equals("CENTRE")){
             status = newTargetValue;
@@ -49,7 +50,8 @@ public class OrdreService {
             //getPropertyChangeSupport().firePropertyChange("target", targetOldValue, target);
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
             
-            //getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
+            getPropertyChangeSupport().firePropertyChange("Target",etat, !etat);
+            etat = !etat;
             status = "Aucun";
             target = "Aucun";
         }
