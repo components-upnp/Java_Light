@@ -94,7 +94,6 @@ public class Fenetre extends javax.swing.JFrame {
                             lumiere1.setLuminosite(
                                 Integer.parseInt((String) pce.getNewValue())
                             );
-                            lumiere1.actualiser();
                             slider.setValue(lumiere1.getLuminosite());
                         }
                     }
