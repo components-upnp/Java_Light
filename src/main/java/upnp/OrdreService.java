@@ -42,18 +42,20 @@ public class OrdreService {
     public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue){
         String targetOldValue = target;
         String statusOldValue = status;
-        boolean etat = true;
-        
+        System.out.println(newTargetValue);
         if(newTargetValue.equals("CENTRE")){
             status = newTargetValue;
             target = status;
             //getPropertyChangeSupport().firePropertyChange("target", targetOldValue, target);
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
             
-            getPropertyChangeSupport().firePropertyChange("Target",etat, !etat);
-            etat = !etat;
+            getPropertyChangeSupport().firePropertyChange("Status",statusOldValue, status);
             status = "Aucun";
             target = "Aucun";
+        }else if(newTargetValue.equals("TIMEOUT")){
+        	
+        	//il a reçu le timeout du timer
+        	getPropertyChangeSupport().firePropertyChange("status",status, "timeout");
         }
     }
 }
