@@ -78,9 +78,11 @@ public class Fenetre extends javax.swing.JFrame {
         this.orderService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(
                 new PropertyChangeListener() {
                    @Override
-                    public void propertyChange(PropertyChangeEvent evt) {
-                        if(evt.getPropertyName().equals("status")){
+                    public void propertyChange(PropertyChangeEvent evt) { 
+                	   if(evt.getPropertyName().equals("status")){
                             actualiser_etat();
+                        }else if(evt.getPropertyName().equals("timeout")){
+                        	actualiser_etat();
                         }
             }
         }
