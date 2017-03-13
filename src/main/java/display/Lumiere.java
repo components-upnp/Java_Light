@@ -26,7 +26,7 @@ public class Lumiere extends javax.swing.JPanel{
     }
 
     public void setLuminosite(int luminosite) {
-        this.luminosite = luminosite;
+    	this.luminosite = luminosite;
     }
 
     @Override

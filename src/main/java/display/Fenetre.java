@@ -5,8 +5,13 @@
  */
 package display;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+
+import javax.swing.Timer;
+
 import org.fourthline.cling.model.meta.LocalService;
 import upnp.LuminositeService;
 import upnp.OrdreService;
@@ -16,12 +21,28 @@ import upnp.OrdreService;
  * @author telly
  */
 public class Fenetre extends javax.swing.JFrame {
-    private Etat etat;
+    private final int T_MAX = 60;
+	private Etat etat;
+    private Timer timer;
+    private int compteur; //compteur qui compte le nombre de seconde depuis l'activation du timer
     private LocalService<OrdreService> orderService;
     private LocalService<LuminositeService> luminositeService;
     
+    
+    //Action listener du timer
+    private ActionListener timerListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(compteur == T_MAX)
+				actualiser_etat();
+			else compteur++;
+		}
+	};
+    
     private void init(){
         etat = Etat.Deverouille;
+        compteur = 0;
+        timer = new Timer(1000, timerListener);
         bt_eclaircir.setEnabled(false);
         bt_activer.setEnabled(false);
         slider.setValue(lumiere1.getLuminosite());
@@ -34,17 +55,22 @@ public class Fenetre extends javax.swing.JFrame {
         } else verouiller();
     }
     
+    //methode de verouillage
     private void verouiller(){
         etat = Etat.Verouille;
+        compteur = 0;
+        timer.start();
         slider.setEnabled(false);
         bt_eclaircir.setEnabled(false);
         bt_noircir.setEnabled(false);
         bt_desactiver.setEnabled(false);
         bt_activer.setEnabled(true);
     }
-    
+    //methode de deverouillage
     private void deverouiller(){
         etat = Etat.Deverouille;
+        compteur = 0;
+        timer.stop();
         slider.setEnabled(true);
         bt_eclaircir.setEnabled(true);
         bt_noircir.setEnabled(true);
@@ -81,11 +107,9 @@ public class Fenetre extends javax.swing.JFrame {
                     public void propertyChange(PropertyChangeEvent evt) { 
                 	   if(evt.getPropertyName().equals("status")){
                             actualiser_etat();
-                        }else if(evt.getPropertyName().equals("timeout")){
-                        	actualiser_etat();
                         }
-            }
-        }
+                   	}
+                }
         );
         
         this.luminositeService.getManager().getImplementation().getPropertyChangeSupport().addPropertyChangeListener(

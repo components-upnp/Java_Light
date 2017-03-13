@@ -47,8 +47,5 @@ public class LuminositeService {
         valeur = newValeur;
         valueStatus = newValeur;
         getPropertyChangeSupport().firePropertyChange("valeur", oldValeur, valeur);
-        //getPropertyChangeSupport().firePropertyChange("valeurstatus", oldStatus, valueStatus);
-            
-        //getPropertyChangeSupport().firePropertyChange("Status", oldStatus, valueStatus);
     }
 }

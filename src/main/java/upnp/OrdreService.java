@@ -47,17 +47,9 @@ public class OrdreService {
             target = status;
             //getPropertyChangeSupport().firePropertyChange("target", targetOldValue, target);
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
-            
-            getPropertyChangeSupport().firePropertyChange("Status",statusOldValue, status);
+           
             status = "Aucun";
             target = "Aucun";
-        }else if(newTargetValue.equals("TIMEOUT")){
-        	
-        	//il a reçu le timeout du timer
-        	statusOldValue = status;
-        	status = "timeout";
-        	getPropertyChangeSupport().firePropertyChange("timeout",statusOldValue, status);
-        	status = "Aucun";
         }
     }
 }
