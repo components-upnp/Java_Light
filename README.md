@@ -8,6 +8,6 @@ A l'état vérouillé l'application se déverouille automatiquement au bout d'un
 
 Execution: Le repertoire build le .jar de l'application
 
-Maintenance: C'est un projet Maven 
+Maintenance: C'est un projet Maven. 
 Effectuer les modifications à faire Ajouter une configuration d'éxecution Maven avec la phase "package" pour exporter en .jar Executer cette commande;
  deux fichiers .jar sont crées dans un nouveau dossier target Ampoule-0.0.1-SNAPSHOT-jar-with-dependencies.jar qui est le bon éxecutable
