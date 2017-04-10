@@ -6,12 +6,8 @@
 package upnp;
 
 import java.beans.PropertyChangeSupport;
-import org.fourthline.cling.binding.annotations.UpnpAction;
-import org.fourthline.cling.binding.annotations.UpnpInputArgument;
-import org.fourthline.cling.binding.annotations.UpnpService;
-import org.fourthline.cling.binding.annotations.UpnpServiceId;
-import org.fourthline.cling.binding.annotations.UpnpServiceType;
-import org.fourthline.cling.binding.annotations.UpnpStateVariable;
+
+import org.fourthline.cling.binding.annotations.*;
 
 /**
  *
@@ -52,4 +48,5 @@ public class OrdreService {
             target = "Aucun";
         }
     }
+
 }
