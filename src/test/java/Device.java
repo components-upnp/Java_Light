@@ -10,17 +10,17 @@ public class Device extends Spy {
 
     public Device() {super("Ampoule (simulation)");}
 
-    public void setValeur(String val) throws NoDevice, NoService, NotLaunched {
+    public void setValeur(int val) throws NoDevice, NoService, NotLaunched {
         HashMap<String, Object> arguments = new HashMap<String, Object>();
         arguments.put("NewValeur",val);
         super.launchAction("LuminositeService","SetValeur",arguments);
     }
 
-    public String getVal() throws NoDevice, NoService, NotLaunched {
+    public int getVal() throws NoDevice, NoService, NotLaunched {
         HashMap<String, Object> arguments = new HashMap<String, Object>();
         ArrayList<Object> val = super.launchAction("LuminositeService","GetValeur",arguments);
         System.out.println(val);
-        return (String) val.get(0);
+        return (int) val.get(0);
     }
 
     public void verouillage() throws NoDevice, NoService, NotLaunched {

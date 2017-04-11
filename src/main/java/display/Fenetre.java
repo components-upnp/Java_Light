@@ -118,11 +118,11 @@ public class Fenetre extends javax.swing.JFrame {
                     public void propertyChange(PropertyChangeEvent pce) {
                         if(pce.getPropertyName().equals("valeur") && !(etat.equals(Etat.Verouille))){
                             lumiere1.setLuminosite(
-                                Integer.parseInt((String) pce.getNewValue())
+                                    (int)pce.getNewValue()
                             );
                             slider.setValue(lumiere1.getLuminosite());
                         }
-                        luminositeService.getManager().getImplementation().setTarget(String.valueOf(lumiere1.getLuminosite()));
+                        luminositeService.getManager().getImplementation().setTarget(lumiere1.getLuminosite());
                     }
         }
         );

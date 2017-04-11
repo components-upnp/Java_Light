@@ -28,46 +28,46 @@ public class TestService {
 
     @Test
     public void testValeurInit() throws NoDevice, NoService, NotLaunched {
-       String val = device.getVal();
-       assertEquals("100", val);
+       int val = device.getVal();
+       assertEquals(100, val);
     }
 
     @Test
     public void testChangementValeurValide() throws NoDevice, NoService, NotLaunched {
-        device.setValeur("0");
-        String val = device.getVal();
-        assertEquals("0", val);
+        device.setValeur(0);
+        int val = device.getVal();
+        assertEquals(0, val);
     }
 
     @Test
     public void testChangementValeurInvalide() throws NoDevice, NoService, NotLaunched {
-        device.setValeur("0");
-        device.setValeur("LOL");
-        String val = device.getVal();
-        assertEquals("0", val);
+        device.setValeur(0);
+        device.setValeur(105);
+        int val = device.getVal();
+        assertEquals(0, val);
     }
 
     @Test
     public void testVerouillage() throws NoDevice, NoService, NotLaunched {
-        device.setValeur("100");
+        device.setValeur(100);
         pause(1000);
         device.verouillage();
         pause(1000);
-        device.setValeur("0");
-        assertEquals("100", device.getVal());
+        device.setValeur(0);
+        assertEquals(100, device.getVal());
     }
 
     @Test
     public void testDeverouillage() throws NoDevice, NoService, NotLaunched {
-        device.setValeur("100");
+        device.setValeur(100);
         pause(1000);
         device.verouillage();
         pause(1000);
-        device.setValeur("0");
+        device.setValeur(0);
         device.verouillage();
         pause(1000);
-        device.setValeur("1");
-        assertEquals("1", device.getVal());
+        device.setValeur(1);
+        assertEquals(1, device.getVal());
     }
 
 

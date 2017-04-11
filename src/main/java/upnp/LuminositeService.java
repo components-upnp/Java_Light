@@ -21,7 +21,6 @@ import org.fourthline.cling.binding.annotations.*;
 )
 public class LuminositeService {
 
-    private ArrayList<String> valeurAutorisee = new ArrayList(Arrays.asList(new AllowedValues().getValues()));
     private final PropertyChangeSupport propertyChangeSupport;
     
     public LuminositeService(){
@@ -32,19 +31,20 @@ public class LuminositeService {
         return propertyChangeSupport;
     }
     
-    @UpnpStateVariable(name ="Valeur" ,defaultValue = "100", sendEvents = false, allowedValueProvider = AllowedValues.class)
-    private String valeur = "100";
+    @UpnpStateVariable(name ="Valeur" ,defaultValue = "100", sendEvents = false, allowedValueProvider = AllowedValues.class, datatype = "int"
+    )
+    private int valeur = 100;
 	
-    @UpnpStateVariable(defaultValue = "100", allowedValueProvider = AllowedValues.class)
-    private String valueStatus = "100";
+    @UpnpStateVariable(defaultValue = "100", allowedValueProvider = AllowedValues.class, datatype = "int")
+    private int valueStatus = 100;
     
     @UpnpAction(
             name = "SetValeur"
     )
-    public void setValeur(@UpnpInputArgument(name = "NewValeur", stateVariable = "Valeur") String newValeur){
-        if (valeurAutorisee.contains(newValeur)) {
-            String oldValeur = valeur;
-            String oldStatus = valueStatus;
+    public void setValeur(@UpnpInputArgument(name = "NewValeur", stateVariable = "Valeur") int newValeur){
+        if ((newValeur >= 0) && (newValeur <= 100)) {
+            int oldValeur = valeur;
+            int oldStatus = valueStatus;
             valeur = newValeur;
             valueStatus = newValeur;
             getPropertyChangeSupport().firePropertyChange("valeur", oldValeur, valeur);
@@ -54,7 +54,7 @@ public class LuminositeService {
     //Fonction utilisée par l'interface afin de passer au service le véritable état de la lampe
     //Cela permet d'eviter le probleme d'avoir une valeur differente de l'intensite reelle
     //(arrive lorsque l'on change la luminostite alors que la lampe est verouillee)
-    public void setTarget(String newValeurTarget) {
+    public void setTarget(int newValeurTarget) {
         this.valeur = newValeurTarget;
     }
 
@@ -62,7 +62,7 @@ public class LuminositeService {
             name = "GetValeur",
             out = @UpnpOutputArgument(name = "RetValeur")
     )
-    public String getValeur(){
+    public int getValeur(){
        return this.valeur;
     }
 }

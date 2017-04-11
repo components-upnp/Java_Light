@@ -1,18 +1,24 @@
 package upnp;
 
-import org.fourthline.cling.binding.AllowedValueProvider;
+import org.fourthline.cling.binding.AllowedValueRangeProvider;
 
 /**
  * Created by comkostiuk on 11/04/2017.
  */
-public class AllowedValues implements AllowedValueProvider {
+public class AllowedValues implements AllowedValueRangeProvider {
+
     @Override
-    public String[] getValues() {
-        String[] allowedvalues = new String [101];
+    public long getMinimum() {
+        return 0;
+    }
 
-        for (int i = 0; i <= 100; i++)
-            allowedvalues[i] = String.valueOf(i);
+    @Override
+    public long getMaximum() {
+        return 100;
+    }
 
-        return allowedvalues;
+    @Override
+    public long getStep() {
+        return 1;
     }
 }
