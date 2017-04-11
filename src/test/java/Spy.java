@@ -243,7 +243,6 @@ public class Spy {
 		                    public void success(ActionInvocation invocation) {
 		                        System.out.println("Successfully called action!");
 		                        if(invocation.getOutput().length>0){
-		                        	System.out.println("lol");
 			                        resultats = new ArrayList<Object>();
 			                        for (ActionArgumentValue<?> object : invocation.getOutput()) {
 										resultats.add(object.getValue());

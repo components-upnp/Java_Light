@@ -122,6 +122,7 @@ public class Fenetre extends javax.swing.JFrame {
                             );
                             slider.setValue(lumiere1.getLuminosite());
                         }
+                        luminositeService.getManager().getImplementation().setTarget(String.valueOf(lumiere1.getLuminosite()));
                     }
         }
         );

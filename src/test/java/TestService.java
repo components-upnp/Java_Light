@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import upnp.AmpouleServer;
@@ -17,6 +18,12 @@ public class TestService {
        pause(1000);
     }
 
+    @After
+    public void after() throws SpyNotRunning {
+        server.interrupt();
+        device.stopSpy();
+    }
+
 
 
     @Test
@@ -34,6 +41,7 @@ public class TestService {
 
     @Test
     public void testChangementValeurInvalide() throws NoDevice, NoService, NotLaunched {
+        device.setValeur("0");
         device.setValeur("LOL");
         String val = device.getVal();
         assertEquals("0", val);
@@ -50,8 +58,16 @@ public class TestService {
     }
 
     @Test
-    public void testDeverouillage() {
-
+    public void testDeverouillage() throws NoDevice, NoService, NotLaunched {
+        device.setValeur("100");
+        pause(1000);
+        device.verouillage();
+        pause(1000);
+        device.setValeur("0");
+        device.verouillage();
+        pause(1000);
+        device.setValeur("1");
+        assertEquals("1", device.getVal());
     }
 
 
