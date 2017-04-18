@@ -1,6 +1,6 @@
 Lampe UPnP offrant des services permettant de contrôler sa luminosité à distance.
 
-Installation:
+<strong>Installation:</strong>
 
 Le fichier .jar permettant d'exécuter l'application se situe dans le répertoire build.
 
@@ -8,7 +8,7 @@ Voici un exemple d'exécution de l'application:
 
 ![alt tag](https://github.com/components-upnp/upnp_Light/blob/master/CaptureAmpoule.PNG)
 
-Spécification UPnP:
+<strong>Spécification UPnP:</strong>
 
 Le composant Lampe offre deux services, LuminositeService et OrdreService, dont voici les spécifications.
 
@@ -26,7 +26,7 @@ Voci le schéma représentant le composant:
 
 ![alt tag](https://github.com/components-upnp/upnp_Light/blob/master/Ampoule.png)
 
-Maintenance: 
+<strong>Maintenance:</strong> 
 
 C'est un projet Maven. 
 Effectuer les modifications à faire, ajouter une configuration d'éxecution Maven avec la phase "package" pour exporter en .jar Executer cette commande;
