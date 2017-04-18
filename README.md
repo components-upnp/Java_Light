@@ -1,13 +1,33 @@
-Ampoule simule le fonctionnement d'une ampoule sur laquelle on peut regler la luminosité
+Lampe UPnP offrant des services permettant de contrôler sa luminosité à distance.
 
-Specification UPnP: L'ampoule reçoit deux commandes UPnP pour soit régler la luminosité ou verouiller/deverouiller le réglage
-1- Réglage de la luminosité: l'ampoule réçoit une chaine de caractère représentant une valeur entière entre 0 et 100
-   et la luminosité est automatiquement reglée sur cette valeur si l'ampoule est déverouillée
-2- Vérouillage/Déverouillage : l'ampoule réçoit la chaine "CENTRE" et se vérouille/déverouille en fonction de l'état courant.
-A l'état vérouillé l'application se déverouille automatiquement au bout d'un certain temps  
+Installation:
 
-Execution: Le repertoire build le .jar de l'application
+Le fichier .jar permettant d'exécuter l'application se situe dans le répertoire build.
 
-Maintenance: C'est un projet Maven. 
-Effectuer les modifications à faire Ajouter une configuration d'éxecution Maven avec la phase "package" pour exporter en .jar Executer cette commande;
+Voici un exemple d'exécution de l'application:
+
+![alt tag](https://github.com/components-upnp/upnp_Light/blob/master/CaptureAmpoule.PNG)
+
+Spécification UPnP:
+
+Le composant Lampe offre deux services, LuminositeService et OrdreService, dont voici les spécifications.
+
+LuminositeService:
+
+   1) GetValeur(): permet de récupérer la valeur de la luminosité courante.
+   2) SetValeu(int NewValeur): permet de définir la luminosité.
+   
+OrdreService:
+
+   1) SetValeur(int NewTargetValue): permet de vérouiller ou dévérouiller la lampe avec la chîne de caractère "CENTRE"
+   (A l'état vérouillé l'application se déverouille automatiquement au bout d'un certain temps)
+
+Voci le schéma représentant le composant:
+
+![alt tag](https://github.com/components-upnp/upnp_Light/blob/master/Ampoule.png)
+
+Maintenance: 
+
+C'est un projet Maven. 
+Effectuer les modifications à faire, ajouter une configuration d'éxecution Maven avec la phase "package" pour exporter en .jar Executer cette commande;
  deux fichiers .jar sont crées dans un nouveau dossier target Ampoule-0.0.1-SNAPSHOT-jar-with-dependencies.jar qui est le bon éxecutable
